@@ -3,6 +3,7 @@ import { User } from "../entities/User";
 
 export class UserService {
 
+
     async findAll() {
         const userRepository = database.getRepository(User);
         const users = await userRepository.find();
@@ -26,7 +27,6 @@ export class UserService {
         if (!user.email || !user.name || !user.password) {
             throw new Error('Não foi possível criar um usuário');
         }
-
         const userRepository = database.getRepository(User);
         let newUser = userRepository.create(user);
         newUser = await userRepository.save(newUser);
@@ -35,15 +35,11 @@ export class UserService {
 
 
     async update(user_data: User) {
-
         if (!user_data.id) {
             throw new Error('Não foi possível criar um usuário');
         }
-
         const userRepository = database.getRepository(User);
-
         let user = await userRepository.findOne({ where: { id: user_data.id } });
-
         if (user) {
             user.name = user_data.name ? user_data.name : user.name;
             user.email = user_data.email ? user_data.email : user.email;
@@ -52,7 +48,13 @@ export class UserService {
         } else {
             throw new Error('Não foi possível localizar o usuário');
         }
+        return user;
+    }
 
+
+    async delete(id: number) {
+        const userRepository = database.getRepository(User);
+        const user = userRepository.update({id: id}, {deleted_at: new Date});
         return user;
     }
 }

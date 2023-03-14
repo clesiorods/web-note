@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { UserService } from "../services/UserService";
+import { NoteService } from "../services/NoteService";
 
 
-export class UserController {
+export class NoteController {
 
 
     async findAll(req: Request, res: Response): Promise<Response> {
         try {
-            const userService = new UserService();
-            const result = await userService.findAll();
+            const noteService = new NoteService();
+            const result = await noteService.findAll();
             return res.status(200).json(result);
 
         } catch (error: any) {
@@ -21,13 +21,13 @@ export class UserController {
 
     async create(req: Request, res: Response): Promise<Response> {
         try {
-            const user = req.body;
-            if (!user.email || !user.name || !user.password) {
-                throw new Error('Não foi possível criar o usuário. Dados incompletos');
+            const {title, content} = req.body;
+            if (!title || !content) {
+                throw new Error('Não foi possível criar a anotação. Dados incompletos');
             }
-            const userService = new UserService();
-            const result = await userService.create(user);
-            return res.status(200).json(result);
+            const noteService = new NoteService();
+            const result = await noteService.create(title, content);
+            return res.status(201).json(result);
 
         } catch (error: any) {
             return res.status(400).json({
@@ -39,12 +39,12 @@ export class UserController {
 
     async findOne(req:Request, res:Response): Promise<Response> {
         try {
-            const userService = new UserService();
+            const noteService = new NoteService();
             const {id} = req.params;
             if(!id) {
                 throw new Error('Não foi possível realizar a busca. Dados incompletos');
             }
-            const user = await userService.findOne(Number(id));
+            const user = await noteService.findOne(Number(id));
             return res.status(200).json(user);
 
         } catch (error: any) {
@@ -57,14 +57,14 @@ export class UserController {
 
     async update(req: Request, res: Response): Promise<Response> {
         try {
-            let user = req.body;
+            let {title, content} = req.body;
             const {id} = req.params;
-            if (!id || (!user.email && !user.name && !user.password)) {
-                throw new Error('Não foi possível criar o usuário. Dados incompletos');
+            if (!id || (!title && !content)) {
+                throw new Error('Não foi possível editar a anotação. Dados incompletos');
             }
-            user.id = id;
-            const userService = new UserService();
-            const result = await userService.update(user);
+
+            const noteService = new NoteService();
+            const result = await noteService.update(Number(id), {title, content});
             return res.status(200).json(result);
 
         } catch (error: any) {
@@ -79,10 +79,10 @@ export class UserController {
         try {
             const {id} = req.params;
             if (!id) {
-                throw new Error('Não foi possível deletar o usuário. Dados incompletos');
+                throw new Error('Não foi possível deletar a nota. Dados incompletos');
             }
-            const userService = new UserService();
-            const result = await userService.delete(Number(id));
+            const noteService = new NoteService();
+            const result = await noteService.delete(Number(id));
             return res.status(200).json(result);
 
         } catch (error: any) {
