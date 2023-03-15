@@ -14,7 +14,8 @@ export class NoteService {
     async findAll() {
         const noteRepository = database.getRepository(Note);
         const notes = noteRepository
-            .createQueryBuilder("note").getMany()
+            .createQueryBuilder("note")
+            .getMany()
         return notes;
     }
 
