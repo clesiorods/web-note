@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { RefreshToken } from "./RefreshToken";
 
 @Entity('User')
 export class User {
@@ -32,4 +33,7 @@ export class User {
 
     @Column({nullable:true}) 
     deleted_by: number;
+
+    // @OneToOne(() => RefreshToken, r => r.user)
+    // refreshToken: RefreshToken
 }

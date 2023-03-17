@@ -2,6 +2,8 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { database } from "../../database";
 import { User } from "../../entities/User";
+import GenerateRefreshToken from "../../provider/GenereteRefrashToken";
+import GenerateTokenProvider from "../../provider/GenereteTokenProvider";
 
 interface IRequest {
     email: string;
@@ -25,13 +27,14 @@ class AuthenticateUserUseCase {
             throw new Error("Usuário ou senha incorreta. Tente novamente");
         }
 
-        const token = sign({}, "409e0f26-640f-44c0-9d20-35c85011e8cd", {
-            subject: user.id.toString(),
-            expiresIn: "20s",
-        });
+        const generatedTokenProvider = new GenerateTokenProvider();
+        const token = await generatedTokenProvider.execute(user.id);
 
-        return token;
+        const generatedRefreshToken = new GenerateRefreshToken();
+        const newRefreshToken = await generatedRefreshToken.execute(user.id);
 
+
+        return {token, newRefreshToken};
     }
 }
 

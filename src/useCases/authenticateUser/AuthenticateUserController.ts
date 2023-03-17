@@ -10,7 +10,7 @@ class AuthenticateUserController {
             const authenticateUserUseCase = new AuthenticateUserUseCase();
 
             const token = await authenticateUserUseCase.exetuce({email, password});
-            return res.status(200).json({token});
+            return res.status(200).json(token);
 
         } catch (error: any) {
             return res.status(400).json(error.message);

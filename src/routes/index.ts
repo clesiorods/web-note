@@ -4,6 +4,7 @@ import { NoteController } from "../Controllers/NoteController";
 import { UserController } from "../Controllers/UserController";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import AuthenticateUserController from "../useCases/authenticateUser/AuthenticateUserController";
+import RefreshTokenUserController from "../useCases/refreshTokenUser/RefreshTokenUserController";
 
 
 const router = Router();
@@ -11,10 +12,12 @@ const userController = new UserController();
 const noteController = new NoteController();
 const createUserController = new CreateUserController();
 const authenticateUserController = new AuthenticateUserController();
+const refreshTokenUserController = new RefreshTokenUserController();
 
 //////////////// RORAS DE TESTE DE AUTENTICAÇÃO //////////////////////
 router.post('/user', createUserController.handle);
 router.post('/login', authenticateUserController.handle);
+router.post('/refresh-token', refreshTokenUserController.handle);
 
 
 //////////////// RORAS DE USUÁRIO //////////////////////
