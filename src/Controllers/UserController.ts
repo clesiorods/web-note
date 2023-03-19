@@ -19,20 +19,16 @@ export class UserController {
     }
 
 
-    async create(req: Request, res: Response): Promise<Response> {
+    async create(req: Request, res: Response) {
         try {
-            const user = req.body;
-            if (!user.email || !user.name || !user.password) {
-                throw new Error('Não foi possível criar o usuário. Dados incompletos');
-            }
-            const userService = new UserService();
-            const result = await userService.create(user);
-            return res.status(200).json(result);
+            const {email, name, password} = req.body;
+            const createUserUseCase = new UserService();
+            const user = await createUserUseCase.create({email, name, password});
+    
+            return res.status(200).json(user);
 
         } catch (error: any) {
-            return res.status(400).json({
-                err: error.message
-            })
+            return res.status(400).json(error.message)
         }
     }
 

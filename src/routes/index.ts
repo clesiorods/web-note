@@ -1,23 +1,25 @@
 import { Router } from "express";
-import CreateUserController from "../Controllers/CreateUserController";
+import AuthenticationController from "../Controllers/AuthenticationController";
+// import CreateUserController from "../Controllers/CreateUserController";
 import { NoteController } from "../Controllers/NoteController";
 import { UserController } from "../Controllers/UserController";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import AuthenticateUserController from "../useCases/authenticateUser/AuthenticateUserController";
-import RefreshTokenUserController from "../useCases/refreshTokenUser/RefreshTokenUserController";
+// import AuthenticateUserController from "../useCases/authenticateUser/AuthenticateUserController";
+// import RefreshTokenUserController from "../useCases/refreshTokenUser/RefreshTokenUserController";
 
 
 const router = Router();
 const userController = new UserController();
 const noteController = new NoteController();
-const createUserController = new CreateUserController();
-const authenticateUserController = new AuthenticateUserController();
-const refreshTokenUserController = new RefreshTokenUserController();
+// const createUserController = new CreateUserController();
+// const authenticateUserController = new AuthenticateUserController();
+// const refreshTokenUserController = new RefreshTokenUserController();
+const authenticationController = new AuthenticationController();
 
 //////////////// RORAS DE TESTE DE AUTENTICAÇÃO //////////////////////
-router.post('/user', createUserController.handle);
-router.post('/login', authenticateUserController.handle);
-router.post('/refresh-token', refreshTokenUserController.handle);
+router.post('/user', userController.create);
+router.post('/login', authenticationController.authenticate);
+router.post('/refresh-token', authenticationController.useRefreshToken);
 
 
 //////////////// RORAS DE USUÁRIO //////////////////////

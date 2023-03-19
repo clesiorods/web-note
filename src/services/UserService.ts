@@ -1,6 +1,12 @@
 import { database } from "../database";
 import { User } from "../entities/User";
 
+
+interface IUser {
+    email: string;
+    name: string;
+    password: string;
+}
 export class UserService {
 
 
@@ -23,7 +29,7 @@ export class UserService {
     }
 
 
-    async create(user: User) {
+    async create(user: IUser) {
         if (!user.email || !user.name || !user.password) {
             throw new Error('Não foi possível criar um usuário');
         }
