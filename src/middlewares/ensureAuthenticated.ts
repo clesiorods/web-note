@@ -15,7 +15,7 @@ export function ensureAuthenticated(req: Request, res: Response, next: NextFunct
     const [, token] = authToken.split(" ");
 
     try {
-        verify(token, "409e0f26-640f-44c0-9d20-35c85011e8cd");
+        verify(token, `${process.env.PRIVATE_KEY}`);
         return next();
 
     } catch (error) {

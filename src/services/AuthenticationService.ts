@@ -15,6 +15,7 @@ interface IRequest {
 export default class AuthenticationService {
 
     async authenticate({ email, password }: IRequest) {
+
         const userRepository = database.getRepository(User);
         const user = await userRepository.findOne({ where: { email: email } })
         if (!user) {
@@ -32,9 +33,9 @@ export default class AuthenticationService {
 
 
     async newToken(id_user: number) {
-        const token = sign({}, "409e0f26-640f-44c0-9d20-35c85011e8cd", {
+        const token = sign({}, `${process.env.PRIVATE_KEY}`, {
             subject: id_user.toString(),
-            expiresIn: "20s",
+            expiresIn: "2h",
         });
         return token;
     }
