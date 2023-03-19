@@ -22,29 +22,16 @@ export default class AuthenticationController {
 
 
     async useRefreshToken(req: Request, res: Response) {
-
         try {
             const { refresh_token } = req.body;
             const authenticationService = new AuthenticationService();
-            const token = await authenticationService.newToken(refresh_token);
-            
-            const currentRefreshToken = await database.getRepository(RefreshToken).findOne({ where: { id: refresh_token } });
-            let refreshToken = "";
-            if (currentRefreshToken) {
-                if(dayjs().unix() < currentRefreshToken.expiresIn) {
-                    const newRefreshToken = await authenticationService.newRefreshToken(currentRefreshToken.id_user);
-                    refreshToken = newRefreshToken ? newRefreshToken.id : ""
-                } else {
-                    throw new Error("expired refresh token");
-                }
-            }
-            return res.json({ token, refreshToken })
+            const tokens = await authenticationService.useRefreshToken(refresh_token);
+            return res.json(tokens);
             
         } catch (error:any) {
             return res.status(500).json(
                 error.message
             )
         }
-
     }
 }

@@ -59,5 +59,21 @@ export default class AuthenticationService {
         await refreshTokenRepository.save(newRefreshToken)
         return newRefreshToken;
     }
+
+
+    async useRefreshToken(id_refreshToken: string) {
+        const refreshTokenRepository = database.getRepository(RefreshToken);
+        const currentRefreshToken = await refreshTokenRepository.findOne({where: {id: id_refreshToken}})
+
+        
+        if((currentRefreshToken) && (currentRefreshToken.expiresIn > dayjs().unix())) {
+            const newToken = await this.newToken(currentRefreshToken.id_user);
+            const newRefreshToken = await this.newRefreshToken(currentRefreshToken.id_user);
+            return ({token: newToken, refreshToken: newRefreshToken.id});
+        } else {
+            throw new Error("Invalid refresh token");
+        }
+
+    }
 }
 
