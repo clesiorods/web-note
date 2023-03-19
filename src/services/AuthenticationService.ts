@@ -24,9 +24,7 @@ export default class AuthenticationService {
         if (!passwordMatch) {
             throw new Error("Usuário ou senha incorreta. Tente novamente");
         }
-        // const generatedTokenProvider = new GenerateTokenProvider();
         const token = await this.newToken(Number(user.id));
-        // const generatedRefreshToken = new GenerateRefreshToken();
         const newRefreshToken = await this.newRefreshToken(user.id);
 
         return { token, refreshToken: newRefreshToken.id };
@@ -64,7 +62,6 @@ export default class AuthenticationService {
     async useRefreshToken(id_refreshToken: string) {
         const refreshTokenRepository = database.getRepository(RefreshToken);
         const currentRefreshToken = await refreshTokenRepository.findOne({where: {id: id_refreshToken}})
-
         
         if((currentRefreshToken) && (currentRefreshToken.expiresIn > dayjs().unix())) {
             const newToken = await this.newToken(currentRefreshToken.id_user);
