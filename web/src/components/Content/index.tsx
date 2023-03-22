@@ -1,6 +1,5 @@
 import React from "react";
 import { Footer } from "../Footer/Footer";
-import { TopBar } from "../TopBar";
 import { Div } from "./style";
 
 type ContentProps = {
@@ -13,7 +12,6 @@ export function Content(props: ContentProps) {
     return (
         <Div>
             <div className="content">
-                <TopBar />
                 {props.children}
                 <Footer />
             </div>

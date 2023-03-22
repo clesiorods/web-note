@@ -1,5 +1,6 @@
 import { Content } from "../Content";
 import { SideBar } from "../SideBar";
+import { TopBar } from "../TopBar";
 import { Div } from "./style";
 
 
@@ -11,11 +12,14 @@ type FrameProps = {
 
 export function MainFrame(props: FrameProps) {
     return (
-        <Div>
-            <SideBar />
-            <Content>
-                {props.children}
-            </Content>
+        <Div className="main-frame">
+            <TopBar />
+            <div style={{display: 'flex'}} >
+                <SideBar />
+                <Content>
+                    {props.children}
+                </Content>
+            </div>
         </Div>
     );
 }

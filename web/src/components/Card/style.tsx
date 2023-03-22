@@ -7,11 +7,10 @@ export const CardStyled = styled.div`
     color: #d7dae2;
 
     .card {
-        /* padding: 16px 16px; */
         margin-top: 24px;
-        border: none;
-        border-radius: 5px;
-        background-color: #283046;
+        border: 1px solid #5f6368;
+        border-radius: 8px;
+        color: #e8eaed;
         transition: .3s all;
         
         .card-header {
@@ -26,11 +25,9 @@ export const CardStyled = styled.div`
                 margin-top: -2px;
                 margin-left: -8px;
                 font-size: 18px;
-                color: #b9bdc7;
             }
 
             span {
-                color: #949aa9;
                 font-size: 12px;
                 margin-right: -8px;
             }
