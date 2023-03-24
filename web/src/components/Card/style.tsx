@@ -7,14 +7,17 @@ export const CardStyled = styled.div`
     color: #d7dae2;
 
     .card {
-        margin-top: 24px;
+        margin-bottom: 12px;
         border: 1px solid #5f6368;
         border-radius: 8px;
         color: #e8eaed;
         transition: .3s all;
+        padding: 12px;
+        min-height: 100px;
+        box-shadow: 0px 1px 10px rgba(0,0,0,.2);
         
         .card-header {
-            margin: 16px;
+            margin: 12px;
             margin-bottom: 0px;
             display: flex;
             justify-content: space-between;
@@ -22,9 +25,10 @@ export const CardStyled = styled.div`
             border: none;
 
             h4 {
-                margin-top: -2px;
+                margin-top: -12px;
                 margin-left: -8px;
                 font-size: 18px;
+                font-weight: 500;
             }
 
             span {
