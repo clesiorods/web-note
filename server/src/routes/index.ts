@@ -31,7 +31,7 @@ router.delete('/user/:id', userController.delete);
 
 
 //////////////// RORAS DAS NOTAS //////////////////////
-router.get('/note', ensureAuthenticated, noteController.findAll);
+router.get('/note', noteController.findAll);
 router.get('/note/:id', noteController.findOne);
 router.put('/note/:id', noteController.update);
 router.post('/note', noteController.create);

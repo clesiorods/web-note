@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const MainGrid = styled.div`
-    margin: 10px 10px 90px 6px;
-    display: grid;
+    margin: 10px 10px 30px 6px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 12px;
+    grid-column-gap: 12px; */
+    min-height: 200vh;
 `;
 
 

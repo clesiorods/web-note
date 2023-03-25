@@ -22,9 +22,9 @@ export function SideBar() {
                     <span className='label'>Lembretes</span>
                 </li>
 
-                {categorias.map(el => {
+                {categorias.map((el, index) => {
                     return (
-                        <li>
+                        <li key={index} >
                             <div className="icon sutil" style={{rotate: '180deg'}}>
                                 <BiTag />
                             </div>

@@ -10,7 +10,7 @@ export const Div = styled.div`
     color: white;
 
     .content {
-        max-width: 1500px;
+        /* max-width: 1500px; */
         margin: auto;
     }
 `;
