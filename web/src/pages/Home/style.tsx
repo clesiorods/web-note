@@ -1,32 +1,27 @@
 import styled from "styled-components";
 
 export const MainGrid = styled.div`
-    margin: 10px 10px 30px 6px;
-    display: block;
+    margin:32px 0px;
+    justify-content: center;
+    display: flex;
     width: 100%;
-    text-align: center;
-    position: relative;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 12px; */
-    min-height: 200vh;
 `;
 
 
 export const InputNewNote = styled.div`
     display: flex;
     justify-content: center;
-    margin: 15px auto 30px;
+    margin: 14px 8px;
 
     div#div_search {
         display: flex;
         align-items: center;
         width: 100%;
-        max-width: 570px;
+        max-width: 574px;
         height: 44px;
         border-radius: 8px;
         border: 1px solid #5f6368;
-        box-shadow: 0px 3px 5px #131313;
+        box-shadow: 0px 2px 6px #0c0c0c;
         padding: 0px 5px 0px 15px;
         color: #d6d6d6;
         
