@@ -91,11 +91,11 @@ export function Home() {
                     {
                         colunas.map((coluna, index) => {
                             return (
-                                <div>
+                                <div key={`col_${index}`}>
                                     {
                                         coluna.map((el, i) => {
                                             return (
-                                                <Card height={1} color={cards[el].color} >
+                                                <Card key={`key_${i}`} height={1} color={cards[el].color} >
                                                     <div className="card-header">
                                                         <h4>Card {cards[el].title}</h4>
                                                         <div className="pin_icon">
