@@ -16,18 +16,88 @@ export const CardStyled = styled.div`
         transition: .3s all;
         min-height: 80px;
         box-shadow: 0px 1px 10px rgba(0,0,0,.2);
+        position: relative;
+
+        .div_check {
+            margin: -6px -7px;
+            background-color: #ffffff;
+            opacity: 0;
+            color: black;
+            transition: .3s all;
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            font-size: 19px;
+            font-weight: 600;
+            position: absolute;
+        }
         
         .card-header {
+            display: flex;
+            justify-content: space-between;
             h4 {
                 margin: 16px 16px 8px;
                 font-size: 18px;
                 font-weight: 500;
             }
+
+            .pin_icon {
+                padding: 12px 12px 0px 0px;
+                font-size: 24px;
+                opacity: 0;
+                transition: .3s all;
+            }
         }
 
         .card-body {
-            margin: 8px 16px 16px;
+            margin: 8px 16px 6px;
             font-size: 16px;
+        }
+
+        .div_icons {
+            opacity: 0;
+            display: flex;
+            transition: .3s all;
+            justify-content: space-between;
+            padding: 0px 8px 8px;
+            font-size: 18px;
+            /* color: #cacaca; */
+
+            .icon_wrapper {
+                /* cursor: pointer; */
+                display: flex;
+                align-items: center;
+                justify-content: center;                
+                height: 32px;
+                width: 32px;
+                border-radius: 15px;
+                opacity: .8;
+
+                :hover {
+                    background-color: #ffffff14;
+                    /* color: white; */
+                }
+            }
+        } 
+
+        svg {
+            cursor: pointer;
+        }
+
+        :hover {
+            box-shadow: 0px 2px 6px #0c0c0c;
+
+            .div_check {
+                opacity: .9;
+            }
+
+            .div_icons {
+                opacity: 1;
+            }
+
+            .pin_icon {
+                opacity: .6;
+            }
         }
 
     }

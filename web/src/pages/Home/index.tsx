@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { BiCheckSquare, BiImageAlt, BiPaint } from "react-icons/bi";
+import { BiCheckSquare, BiImageAlt, BiPaint, BiPin } from "react-icons/bi";
 import { Card } from "../../components/Card";
 import { MainFrame } from "../../components/MainFrame";
 import { InputNewNote, MainGrid } from "./style";
@@ -13,10 +13,12 @@ export function Home() {
         { number: 2, title: 'Título do card', text: `aaaa`, color: '' },
         { number: 3, title: 'Título do card', text: `aaaa`, color: '#5c2b29' },
         { number: 4, title: 'Título do card', text: 'Era uma casa muito engraçada não tinha teto não tinha nada ', color: '' },
-        { number: 5, title: 'Título do card', text: `TAEE11 - Taesa S.A.
+        {
+            number: 5, title: 'Título do card', text: `TAEE11 - Taesa S.A.
         ITSA4 - Itausa
         BBAS3 - Banco do Brasil S.A.
-        BRADESPAR`, color: '#1e3a5f' },
+        BRADESPAR`, color: '#1e3a5f'
+        },
         { number: 6, title: 'Título do card', text: `aaaa`, color: '' },
         { number: 7, title: 'Título do card', text: `aaaa`, color: '' },
         { number: 8, title: 'Título do card', text: `aaaa`, color: '#635d19' },
@@ -96,6 +98,9 @@ export function Home() {
                                                 <Card height={1} color={cards[el].color} >
                                                     <div className="card-header">
                                                         <h4>Card {cards[el].title}</h4>
+                                                        <div className="pin_icon">
+                                                            <BiPin />
+                                                        </div>
                                                     </div>
                                                     <div className="card-body">
                                                         {cards[el].text}
