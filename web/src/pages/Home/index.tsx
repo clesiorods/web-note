@@ -2,7 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import { BiCheckSquare, BiImageAlt, BiPaint, BiPin } from "react-icons/bi";
 import { Card } from "../../components/Card";
 import { MainFrame } from "../../components/MainFrame";
+import Modal from "../../components/Modal";
+import useModal from "../../hooks/UseModal";
 import { InputNewNote, MainGrid } from "./style";
+
 
 
 export function Home() {
@@ -65,8 +68,16 @@ export function Home() {
     })
 
 
+    const { isOpen, toggle } = useModal();
+
+
+
     return (
         <MainFrame>
+            <Modal isOpen={isOpen} toggle={toggle}>
+                <div>Yaay!!! Our Modal is rendered Properly.</div>
+            </Modal>
+
             <div ref={divRef}>
                 <InputNewNote>
                     <div id="div_search" style={{ justifyContent: 'space-between' }}>
@@ -96,7 +107,7 @@ export function Home() {
                                         coluna.map((el, i) => {
                                             return (
                                                 <Card key={`key_${i}`} height={1} color={cards[el].color} >
-                                                    <div className="card-header">
+                                                    <div className="card-header" onClick={toggle}>
                                                         <h4>Card {cards[el].title}</h4>
                                                         <div className="pin_icon">
                                                             <BiPin />

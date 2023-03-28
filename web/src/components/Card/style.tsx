@@ -13,7 +13,7 @@ export const CardStyled = styled.div`
         margin-bottom: 16px;
         border: ${e => e.color ? `1px solid ${e.color}` : '1px solid #5f6368'};
         border-radius: 8px;
-        transition: .3s all;
+        transition: .2s all;
         min-height: 80px;
         box-shadow: 0px 1px 10px rgba(0,0,0,.2);
         position: relative;
@@ -36,8 +36,8 @@ export const CardStyled = styled.div`
             display: flex;
             justify-content: space-between;
             h4 {
-                margin: 16px 16px 8px;
-                font-size: 18px;
+                margin: 12px 16px 8px;
+                font-size: 17px;
                 font-weight: 500;
             }
 
@@ -86,6 +86,12 @@ export const CardStyled = styled.div`
 
         :hover {
             box-shadow: 0px 2px 6px #0c0c0c;
+            /* margin-top: -1px;
+            margin-bottom: 17px;
+            margin-left: -1px;
+            margin-right: -1px;
+            width: 242px; */
+
 
             .div_check {
                 opacity: .9;
