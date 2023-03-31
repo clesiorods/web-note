@@ -10,11 +10,12 @@ type CardProps = {
 export function Card(props: CardProps) {
 
     const h1Ref = useRef<HTMLHeadingElement>(null);
-    console.log(h1Ref.current?.offsetHeight);
+    const height = h1Ref.current?.offsetHeight;
+
 
 
     return (
-        <CardStyled>
+        <CardStyled heigth={height}>
             <div ref={h1Ref} className="card">
                 {props.children}
             </div>
