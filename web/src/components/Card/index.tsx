@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { CardStyled } from "./style";
 
 type CardProps = {
@@ -8,11 +9,13 @@ type CardProps = {
 
 export function Card(props: CardProps) {
 
+    const h1Ref = useRef<HTMLHeadingElement>(null);
+    console.log(h1Ref.current?.offsetHeight);
 
 
     return (
         <CardStyled>
-            <div className="card">
+            <div ref={h1Ref} className="card">
                 {props.children}
             </div>
         </CardStyled>
