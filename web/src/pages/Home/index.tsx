@@ -6,8 +6,27 @@ import { InputNewNote, MainGrid } from "./style";
 
 
 export function Home() {
-    
-    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20];
+
+    const cards = [
+        { pos: '1', teste: 'Teste de texto mais longo para alterar o tamaho da div dfffffffffff ffffff ffffffffff ffffffff' },
+        { pos: '2', teste: 'aaaaaaa' },
+        { pos: '3', teste: 'aaaaaaa' },
+        { pos: '4', teste: 'aaaaaaa' },
+        { pos: '5', teste: 'aaaaaaa' },
+        { pos: '6', teste: 'aaaaaaa' },
+        { pos: '7', teste: 'aaaaaaa' },
+        { pos: '8', teste: 'aaaaaaa' },
+        { pos: '9', teste: 'aaaaaaa' },
+        { pos: '10', teste: 'aaaaaaa' },
+        { pos: '11', teste: 'aaaaaaa' },
+        { pos: '12', teste: 'aaaaaaa' },
+        { pos: '13', teste: 'aaaaaaa' },
+        { pos: '14', teste: 'aaaaaaa' },
+        { pos: '15', teste: 'aaaaaaa' },
+        { pos: '16', teste: 'aaaaaaa' },
+        { pos: '18', teste: 'aaaaaaa' },
+        { pos: '19', teste: 'aaaaaaa' }
+    ];
 
 
 
@@ -15,13 +34,15 @@ export function Home() {
     let linha = 0;
     let cont = -1;
     let horizontalPosition = 0;
+    let verticalPosition = 0;
+    let heightColumns:any[] = [];
 
     const [larguraDiv, setLarguraDiv] = useState<number>(0);
 
     const divRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        
+
         function handleResize(): void {
             if (divRef.current) {
                 const largura = divRef.current.offsetWidth;
@@ -70,13 +91,21 @@ export function Home() {
                             cont = 0;
                         }
 
+                        if(heightColumns[cont] !== undefined) {
+                            heightColumns[cont] += 142;
+                        } else {
+                            heightColumns[cont] = 0;
+                        }
+
                         horizontalPosition = cont * 256;
+                        // verticalPosition = verticalPosition + 142;
 
                         return (
-                            <div key={index} style={{ transition: '.3s all', transform: `translate(${horizontalPosition}px, ${142 * linha}px)` }}>
-                                <Card height={1} >
+                            <div key={index} style={{ transform: `translate(${horizontalPosition}px, ${heightColumns[cont]}px)` }}>
+                                <Card >
                                     <div className="card-header">
                                         <h4>Card {index + 1}, <br></br> linha {linha}</h4>
+                                        <p>{element.teste}</p>
                                     </div>
                                     <div className="card-body">
                                     </div>

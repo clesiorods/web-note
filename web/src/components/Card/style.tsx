@@ -7,6 +7,7 @@ export const CardStyled = styled.div`
     color: #d7dae2;
     width: 240px;
     position: absolute;
+    transition: all.2s all;
 
     .card {
         margin-bottom: 12px;
@@ -44,7 +45,6 @@ export const CardStyled = styled.div`
             margin: 16px;
             margin-top: 0px;
             height: 100%;
-            /* background-color: rgba(150, 156, 166, 0.35); */
         }
 
     }

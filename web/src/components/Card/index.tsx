@@ -3,7 +3,7 @@ import { CardStyled } from "./style";
 
 type CardProps = {
     children: React.ReactNode;
-    height: number;
+    height?: number;
 }
 
 
@@ -12,10 +12,10 @@ export function Card(props: CardProps) {
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const height = h1Ref.current?.offsetHeight;
 
-
+    console.log(height);
 
     return (
-        <CardStyled heigth={height}>
+        <CardStyled>
             <div ref={h1Ref} className="card">
                 {props.children}
             </div>
