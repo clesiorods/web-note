@@ -42,6 +42,7 @@ export const TopBarStyled = styled.nav`
         div.col_2 {
             display: flex;
             align-items: center;
+            padding-left: 8px;
 
             div#div_search {
                 display: flex;

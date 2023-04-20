@@ -1,23 +1,44 @@
-import { useRef } from "react";
+import { BiArchiveIn, BiBellPlus, BiCheck, BiDotsVerticalRounded, BiImageAdd, BiPalette, BiUserPlus } from "react-icons/bi";
 import { CardStyled } from "./style";
 
 type CardProps = {
     children: React.ReactNode;
-    height?: number;
+    height: number;
+    color: string;
 }
 
 
 export function Card(props: CardProps) {
 
-    const h1Ref = useRef<HTMLHeadingElement>(null);
-    const height = h1Ref.current?.offsetHeight;
-
-    console.log(height);
-
     return (
-        <CardStyled>
-            <div ref={h1Ref} className="card">
+        <CardStyled color={props.color}>
+            <div className="card">
+                <div className="div_check">
+                    <BiCheck/>
+                </div>
+
                 {props.children}
+
+                <div className="div_icons">
+                    <div className="icon_wrapper">
+                        <BiBellPlus />
+                    </div>
+                    <div className="icon_wrapper">
+                        <BiUserPlus />
+                    </div>
+                    <div className="icon_wrapper">
+                        <BiPalette />
+                    </div>
+                    <div className="icon_wrapper">
+                        <BiImageAdd />
+                    </div>
+                    <div className="icon_wrapper">
+                        <BiArchiveIn />
+                    </div>
+                    <div className="icon_wrapper">
+                        <BiDotsVerticalRounded />
+                    </div>
+                </div>
             </div>
         </CardStyled>
     );
