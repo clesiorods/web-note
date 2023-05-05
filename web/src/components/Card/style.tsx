@@ -6,6 +6,26 @@ export const CardStyled = styled.div`
     color: #e8eaed;
     margin-left: 8px;
     margin-right: 8px;
+
+    .modal_backDrop {
+        display: none;
+        opacity: 1;
+        background-color: #ffffff14;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: .6s all;
+
+        .modal {
+            background-color: ${e => e.color ? e.color : 'rgb(32 33 36)'};
+            border: ${e => e.color ? `1px solid ${e.color}` : '1px solid #5f6368'};
+            transition: .2s all;
+            padding: 28px;
+            border-radius: 8px;
+        }
+    }
     
     .card {
         background-color: ${e => e.color ? e.color : 'none'};
@@ -13,10 +33,11 @@ export const CardStyled = styled.div`
         margin-bottom: 16px;
         border: ${e => e.color ? `1px solid ${e.color}` : '1px solid #5f6368'};
         border-radius: 8px;
-        transition: .3s all;
+        /* transition: .3s all; */
+        transition: color .3s all;
         min-height: 80px;
         box-shadow: 0px 1px 10px rgba(0,0,0,.2);
-        position: relative;
+        /* position: relative; */
 
         .div_check {
             margin: -6px -7px;

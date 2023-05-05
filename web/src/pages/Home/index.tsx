@@ -97,7 +97,7 @@ export function Home() {
                                     {
                                         coluna.map((el, i) => {
                                             return (
-                                                <Card key={`key_${i}`} height={1} color={cards[el].color} >
+                                                <Card key={`key_${i}`} color={cards[el].color} >
                                                     <div className="card-header">
                                                         <h4>Card {cards[el].title}</h4>
                                                         <div className="pin_icon">
