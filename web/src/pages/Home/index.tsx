@@ -14,7 +14,7 @@ export function Home() {
         { number: 1, title: 'Título do card', text: 'Lembra de beber água todos os dias', color: '' },
         { number: 2, title: 'Título do card', text: `aaaa`, color: '' },
         { number: 3, title: 'Título do card', text: `aaaa`, color: '#5c2b29' },
-        { number: 4, title: 'Título do card', text: 'Era uma casa muito engraçada não tinha teto não tinha nada ', color: '' },
+        { number: 4, title: 'Título do card', text: 'Era uma casa muito engraçada não tinha teto não tinha nada Era uma casa muito engraçada não tinha teto não tinha nada  Era uma casa muito engraçada não tinha teto não tinha nada ', color: '' },
         {
             number: 5, title: 'Título do card', text: `TAEE11 - Taesa S.A.
         ITSA4 - Itausa

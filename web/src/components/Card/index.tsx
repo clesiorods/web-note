@@ -14,11 +14,13 @@ export function Card(props: CardProps) {
         opacity: 0,
         display: "none",
         transform: "translate(0px, 0px)",
-        width: "240px",
+        width: "184px",
+        height: "200px"
     }
 
 
-    const divRef: RefObject<HTMLDivElement> = useRef(null);
+    const cardRef: RefObject<HTMLDivElement> = useRef(null);
+    const divRef = useRef<HTMLDivElement>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [cardOpacity, setCardOpacity] = useState(1);
     const [modalStyle, setModalStyle] = useState(style_modalClose);
@@ -31,10 +33,15 @@ export function Card(props: CardProps) {
 
     function handleModal() {
 
-        const divElement = divRef.current;
-        if (divElement) {
+        const divElement = cardRef.current;
+
+        if (divElement && divRef.current) {
             const rect = divElement.getBoundingClientRect();
-            console.log(rect.left, rect.top);
+            const divRef_proprerity = divRef.current;
+            // console.log(rect.left, rect.top);
+            if (divRef.current) {
+                // console.log(divRef.current.offsetHeight);
+            }
 
             if (modalOpen) {
                 setModalOpen(false);
@@ -57,14 +64,16 @@ export function Card(props: CardProps) {
                     opacity: 1,
                     display: "block",
                     transform: `translate(${rect.left}px, ${rect.top}px)`,
-                    width: "240px",
+                    width: "184px",
+                    height: `${divRef.current.offsetHeight - 58}px`
                 });
                 setTimeout(() => {
                     setModalStyle({
                         opacity: 1,
                         display: "none",
                         transform: `translate(${rect.left}px, ${rect.top}px)`,
-                        width: "240px",
+                        width: "184px",
+                        height: `${divRef_proprerity}px`
                     });
                     setCardOpacity(1);
                 }, 200);
@@ -84,14 +93,15 @@ export function Card(props: CardProps) {
                         transition: ".2s all",
                         display: "block",
                     })
-                }, 50);
+                }, 10);
 
 
                 setModalStyle({
                     opacity: 1,
                     display: "block",
                     transform: `translate(${rect.left}px, ${rect.top}px)`,
-                    width: "240px"
+                    width: "184px",
+                    height: `${divRef.current.offsetHeight - 58}px`
                 });
                 setTimeout(() => {
                     setModalStyle({
@@ -99,17 +109,18 @@ export function Card(props: CardProps) {
                         display: "block",
                         transform: `translate(40px, 40px)`,
                         width: "60vh",
+                        height: "auto",
                     });
                     setCardOpacity(0);
-                }, 50);
+                }, 10);
 
             }
         }
     }
 
     return (
-        <div>
-            <CardStyled color={props.color} ref={divRef}>
+        <div ref={divRef}>
+            <CardStyled color={props.color} ref={cardRef}>
 
                 <div className="modal_backDrop" style={bd_modalStyle} onClick={handleModal}>
                     <div className="modal" style={modalStyle}>
@@ -117,7 +128,7 @@ export function Card(props: CardProps) {
                     </div>
                 </div>
 
-                <div className="card" onClick={handleModal} style={{opacity: cardOpacity}}>
+                <div className="card" onClick={handleModal} style={{ opacity: cardOpacity }}>
                     <div className="div_check">
                         <BiCheck />
                     </div>
