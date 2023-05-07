@@ -17,18 +17,13 @@ export const CardStyled = styled.div`
         left: 0;
         right: 0;
         transition: .6s all;
-
-
-
-
-
-
         
         .modal {
             background-color: ${e => e.color ? e.color : 'rgb(32 33 36)'};
             border: ${e => e.color ? `1px solid ${e.color}` : '1px solid #5f6368'};
             transition: all ease-in-out .22s;
-            /* padding: 14px; */
+            min-height: 123px;
+            max-height: 90vh;
             border-radius: 8px;
 
 

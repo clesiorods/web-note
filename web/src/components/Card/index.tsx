@@ -25,7 +25,7 @@ export function Card(props: CardProps) {
     const [cardOpacity, setCardOpacity] = useState(1);
     const [modalStyle, setModalStyle] = useState(style_modalClose);
     const [bd_modalStyle, set_bdModalStyle] = useState({
-        background: "rgba(0,0,0,.3)",
+        background: "rgba(10,10,10,.5)",
         transition: ".2s all",
         display: "none",
     });
@@ -38,28 +38,15 @@ export function Card(props: CardProps) {
         if (divElement && divRef.current) {
             const rect = divElement.getBoundingClientRect();
             const divRef_proprerity = divRef.current;
-            // console.log(rect.left, rect.top);
-            if (divRef.current) {
-                // console.log(divRef.current.offsetHeight);
-            }
+            const cardHeight = divRef.current.offsetHeight;
 
             if (modalOpen) {
                 setModalOpen(false);
-
                 set_bdModalStyle({
                     background: "rgba(0,0,0,0)",
                     transition: ".2s all",
                     display: "block",
                 })
-                setTimeout(() => {
-                    set_bdModalStyle({
-                        background: "rgba(0,0,0,.3)",
-                        transition: ".2s all",
-                        display: "none",
-                    })
-                }, 200);
-
-
                 setModalStyle({
                     opacity: 1,
                     display: "block",
@@ -67,7 +54,13 @@ export function Card(props: CardProps) {
                     width: "184px",
                     height: `${divRef.current.offsetHeight - 58}px`
                 });
+                
                 setTimeout(() => {
+                    set_bdModalStyle({
+                        background: "rgba(10,10,10,.5)",
+                        transition: ".2s all",
+                        display: "none",
+                    })
                     setModalStyle({
                         opacity: 1,
                         display: "none",
@@ -81,21 +74,11 @@ export function Card(props: CardProps) {
 
             } else {
                 setModalOpen(true);
-
                 set_bdModalStyle({
                     background: "rgba(0,0,0,0)",
                     transition: ".2s all",
                     display: "block",
                 })
-                setTimeout(() => {
-                    set_bdModalStyle({
-                        background: "rgba(0,0,0,.3)",
-                        transition: ".2s all",
-                        display: "block",
-                    })
-                }, 10);
-
-
                 setModalStyle({
                     opacity: 1,
                     display: "block",
@@ -103,17 +86,22 @@ export function Card(props: CardProps) {
                     width: "184px",
                     height: `${divRef.current.offsetHeight - 58}px`
                 });
+
                 setTimeout(() => {
+                    set_bdModalStyle({
+                        background: "rgba(10,10,10,.5)",
+                        transition: ".2s all",
+                        display: "block",
+                    })
                     setModalStyle({
                         opacity: 1,
                         display: "block",
-                        transform: `translate(40px, 40px)`,
-                        width: "60vh",
+                        transform: `translate(calc((100vw - 600px)/2), 40px)`,
+                        width: "600px",
                         height: "auto",
                     });
                     setCardOpacity(0);
                 }, 10);
-
             }
         }
     }
