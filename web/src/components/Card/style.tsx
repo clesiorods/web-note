@@ -8,6 +8,7 @@ export const CardStyled = styled.div`
     margin-right: 8px;
 
     .modal_backDrop {
+        z-index: 10;
         display: none;
         opacity: 1;
         background-color: #ffffff14;

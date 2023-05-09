@@ -38,7 +38,7 @@ export function Card(props: CardProps) {
         if (divElement && divRef.current) {
             const rect = divElement.getBoundingClientRect();
             const divRef_proprerity = divRef.current;
-            const cardHeight = divRef.current.offsetHeight;
+            // const cardHeight = divRef.current.offsetHeight;
 
             if (modalOpen) {
                 setModalOpen(false);
